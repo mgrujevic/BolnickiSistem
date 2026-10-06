@@ -1,0 +1,591 @@
+﻿<UserControl x:Class="BolnickiSistem.Views.Lekar.DetaljiPregledaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="White">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+
+        <StackPanel>
+
+            <!-- ====================================== -->
+            <!-- NASLOV -->
+            <!-- ====================================== -->
+
+            <TextBlock Text="Detalji pregleda"
+                       FontSize="24"
+                       FontWeight="SemiBold"
+                       Foreground="#263238"
+                       Margin="0,0,0,20"/>
+
+
+            <!-- ====================================== -->
+            <!-- GLAVNI RASPORED: 40% / 60% -->
+            <!-- ====================================== -->
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+
+                    <!-- LEVA STRANA - 40% -->
+                    <ColumnDefinition Width="40*"/>
+
+                    <!-- DESNA STRANA - 60% -->
+                    <ColumnDefinition Width="60*"/>
+
+                </Grid.ColumnDefinitions>
+
+
+                <!-- ================================================== -->
+                <!-- LEVA STRANA - DETALJI PREGLEDA -->
+                <!-- ================================================== -->
+
+                <Border Grid.Column="0"
+                        Background="#F8FAFB"
+                        BorderBrush="#E0E0E0"
+                        BorderThickness="1"
+                        CornerRadius="6"
+                        Padding="20"
+                        Margin="0,0,10,20">
+
+                    <StackPanel>
+
+                        <!-- OSNOVNI PODACI -->
+
+                        <TextBlock Text="Osnovni podaci"
+                                   FontSize="19"
+                                   FontWeight="SemiBold"
+                                   Foreground="#263238"
+                                   Margin="0,0,0,20"/>
+
+
+                        <!-- DATUM -->
+
+                        <StackPanel Margin="0,0,0,18">
+
+                            <TextBlock Text="Datum pregleda"
+                                       Foreground="#78909C"
+                                       Margin="0,0,0,5"/>
+
+                            <TextBlock Text="{Binding IzabraniPregled.DatumPregleda,
+                                                      StringFormat=dd.MM.yyyy.}"
+                                       FontWeight="SemiBold"
+                                       FontSize="15"/>
+
+                        </StackPanel>
+
+
+                        <!-- LEKAR -->
+
+                        <StackPanel Margin="0,0,0,18">
+
+                            <TextBlock Text="Lekar"
+                                       Foreground="#78909C"
+                                       Margin="0,0,0,5"/>
+
+                            <TextBlock Text="{Binding IzabraniPregled.Lekar.ImePrezime}"
+                                       FontWeight="SemiBold"
+                                       FontSize="15"/>
+
+                        </StackPanel>
+
+
+                        <!-- RAZLOG -->
+
+                        <StackPanel Margin="0,0,0,18">
+
+                            <TextBlock Text="Razlog dolaska"
+                                       Foreground="#78909C"
+                                       Margin="0,0,0,5"/>
+
+                            <TextBlock Text="{Binding IzabraniPregled.RazlogDolaska}"
+                                       TextWrapping="Wrap"
+                                       FontSize="14"/>
+
+                        </StackPanel>
+
+
+                        <!-- SIMPTOMI -->
+
+                        <StackPanel Margin="0,0,0,18">
+
+                            <TextBlock Text="Simptomi"
+                                       Foreground="#78909C"
+                                       Margin="0,0,0,5"/>
+
+                            <TextBlock Text="{Binding IzabraniPregled.Simptomi}"
+                                       TextWrapping="Wrap"
+                                       FontSize="14"/>
+
+                        </StackPanel>
+
+
+                        <!-- NALAZ -->
+
+                        <StackPanel Margin="0,0,0,18">
+
+                            <TextBlock Text="Nalaz"
+                                       Foreground="#78909C"
+                                       Margin="0,0,0,5"/>
+
+                            <TextBlock Text="{Binding IzabraniPregled.Nalaz}"
+                                       TextWrapping="Wrap"
+                                       FontSize="14"/>
+
+                        </StackPanel>
+
+
+                        <!-- PREPORUKA -->
+
+                        <StackPanel Margin="0,0,0,18">
+
+                            <TextBlock Text="Preporuka"
+                                       Foreground="#78909C"
+                                       Margin="0,0,0,5"/>
+
+                            <TextBlock Text="{Binding IzabraniPregled.Preporuka}"
+                                       TextWrapping="Wrap"
+                                       FontSize="14"/>
+
+                        </StackPanel>
+
+
+                        <!-- DATUM KONTROLE -->
+
+                        <StackPanel Margin="0,0,0,5">
+
+                            <TextBlock Text="Datum kontrole"
+                                       Foreground="#78909C"
+                                       Margin="0,0,0,5"/>
+
+                            <TextBlock Text="{Binding IzabraniPregled.DatumKontrole,
+                                                      StringFormat=dd.MM.yyyy.}"
+                                       FontSize="14"/>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                </Border>
+
+
+                <!-- ================================================== -->
+                <!-- DESNA STRANA - DIJAGNOZE + TERAPIJE -->
+                <!-- ================================================== -->
+
+                <StackPanel Grid.Column="1"
+                            Margin="10,0,0,20">
+
+
+                    <!-- ================================================== -->
+                    <!-- DIJAGNOZE -->
+                    <!-- ================================================== -->
+
+                    <Border Background="#F8FAFB"
+                            BorderBrush="#E0E0E0"
+                            BorderThickness="1"
+                            CornerRadius="6"
+                            Padding="18"
+                            Margin="0,0,0,20">
+
+                        <StackPanel>
+
+                            <!-- NASLOV -->
+
+                            <Grid Margin="0,0,0,15">
+
+                                <TextBlock Text="Dijagnoze"
+                                           FontSize="19"
+                                           FontWeight="SemiBold"
+                                           Foreground="#263238"/>
+
+                                <Button Content="+ Dodaj dijagnozu"
+                                        HorizontalAlignment="Right"
+                                        Height="34"
+                                        Padding="12,0"
+                                        Background="#1976D2"
+                                        Foreground="White"
+                                        BorderThickness="0"
+                                        Click="DodajDijagnozuButton_Click"/>
+
+                            </Grid>
+
+
+                            <!-- LISTA DIJAGNOZA -->
+
+                            <DataGrid ItemsSource="{Binding IzabraniPregled.Dijagnoze}"
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True"
+                                      CanUserAddRows="False"
+                                      HeadersVisibility="Column"
+                                      GridLinesVisibility="Horizontal"
+                                      MinHeight="80"
+                                      MaxHeight="220"
+                                      FontSize="14">
+
+                                <DataGrid.Columns>
+
+                                    <DataGridTextColumn Header="Šifra"
+                                                        Binding="{Binding Sifra}"
+                                                        Width="90"/>
+
+                                    <DataGridTextColumn Header="Naziv"
+                                                        Binding="{Binding Naziv}"
+                                                        Width="*"/>
+
+                                    <DataGridTextColumn Header="Opis"
+                                                        Binding="{Binding Opis}"
+                                                        Width="*"/>
+
+                                </DataGrid.Columns>
+
+                            </DataGrid>
+
+
+                            <!-- NOVA DIJAGNOZA -->
+
+                            <StackPanel x:Name="NovaDijagnozaPanel"
+                                        Visibility="Collapsed"
+                                        Margin="0,20,0,0">
+
+                                <Separator Margin="0,0,0,20"/>
+
+                                <TextBlock Text="Nova dijagnoza"
+                                           FontSize="17"
+                                           FontWeight="SemiBold"
+                                           Foreground="#263238"
+                                           Margin="0,0,0,15"/>
+
+
+                                <!-- ŠIFRA + NAZIV -->
+
+                                <Grid>
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <StackPanel Grid.Column="0"
+                                                Margin="0,0,8,0">
+
+                                        <TextBlock Text="Šifra"
+                                                   Foreground="#78909C"
+                                                   Margin="0,0,0,5"/>
+
+                                        <TextBox Text="{Binding NovaDijagnozaSifra,
+                                                               UpdateSourceTrigger=PropertyChanged}"
+                                                 Height="36"
+                                                 Padding="8"/>
+
+                                    </StackPanel>
+
+
+                                    <StackPanel Grid.Column="1"
+                                                Margin="8,0,0,0">
+
+                                        <TextBlock Text="Naziv"
+                                                   Foreground="#78909C"
+                                                   Margin="0,0,0,5"/>
+
+                                        <TextBox Text="{Binding NovaDijagnozaNaziv,
+                                                               UpdateSourceTrigger=PropertyChanged}"
+                                                 Height="36"
+                                                 Padding="8"/>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+
+                                <!-- OPIS -->
+
+                                <TextBlock Text="Opis"
+                                           Foreground="#78909C"
+                                           Margin="0,15,0,5"/>
+
+                                <TextBox Text="{Binding NovaDijagnozaOpis,
+                                                        UpdateSourceTrigger=PropertyChanged}"
+                                         Height="70"
+                                         Padding="8"
+                                         TextWrapping="Wrap"
+                                         AcceptsReturn="True"/>
+
+
+                                <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Right"
+                                        Margin="0,15,0,0">
+
+                                    <Button Content="Otkaži"
+                                            Width="100"
+                                            Height="38"
+                                            Margin="0,0,10,0"
+                                            Background="#ECEFF1"
+                                            Foreground="#455A64"
+                                            BorderThickness="0"
+                                            Click="OtkaziDijagnozuButton_Click"/>
+
+                                    <Button Content="Sačuvaj dijagnozu"
+                                            Width="150"
+                                            Height="38"
+                                            Background="#1976D2"
+                                            Foreground="White"
+                                            BorderThickness="0"
+                                            Command="{Binding SacuvajDijagnozuCommand}"/>   
+
+                                </StackPanel>
+
+                            </StackPanel>
+
+                        </StackPanel>
+
+                    </Border>
+
+
+                    <!-- ================================================== -->
+                    <!-- TERAPIJE -->
+                    <!-- ================================================== -->
+
+                    <Border Background="#F8FAFB"
+                            BorderBrush="#E0E0E0"
+                            BorderThickness="1"
+                            CornerRadius="6"
+                            Padding="18"
+                            Margin="0,0,0,20">
+
+                        <StackPanel>
+
+                            <!-- NASLOV -->
+
+                            <Grid Margin="0,0,0,15">
+
+                                <TextBlock Text="Terapije"
+                                           FontSize="19"
+                                           FontWeight="SemiBold"
+                                           Foreground="#263238"/>
+
+                                <Button Content="+ Dodaj terapiju"
+                                        HorizontalAlignment="Right"
+                                        Height="34"
+                                        Padding="12,0"
+                                        Background="#1976D2"
+                                        Foreground="White"
+                                        BorderThickness="0"
+                                        Click="DodajTerapijuButton_Click"/>
+
+                            </Grid>
+
+
+                            <!-- POSTOJEĆE TERAPIJE -->
+
+                            <DataGrid ItemsSource="{Binding IzabraniPregled.Terapije}"
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True"
+                                      CanUserAddRows="False"
+                                      HeadersVisibility="Column"
+                                      GridLinesVisibility="Horizontal"
+                                      MinHeight="80"
+                                      MaxHeight="250"
+                                      FontSize="14">
+
+                                <DataGrid.Columns>
+
+                                    <DataGridTextColumn Header="Lek"
+                                                        Binding="{Binding NazivLeka}"
+                                                        Width="*"/>
+
+                                    <DataGridTextColumn Header="Doziranje"
+                                                        Binding="{Binding Doziranje}"
+                                                        Width="*"/>
+
+                                    <DataGridTextColumn Header="Učestalost"
+                                                        Binding="{Binding Ucestalost}"
+                                                        Width="*"/>
+
+                                    <DataGridTextColumn Header="Početak"
+                                                        Binding="{Binding DatumPocetka,
+                                                                  StringFormat=dd.MM.yyyy.}"
+                                                        Width="100"/>
+
+                                    <DataGridTextColumn Header="Završetak"
+                                                        Binding="{Binding DatumZavrsetka,
+                                                                  StringFormat=dd.MM.yyyy.}"
+                                                        Width="100"/>
+
+                                </DataGrid.Columns>
+
+                            </DataGrid>
+
+
+                            <!-- NOVA TERAPIJA -->
+
+                            <StackPanel x:Name="NovaTerapijaPanel"
+                                        Visibility="Collapsed"
+                                        Margin="0,20,0,0">
+
+                                <Separator Margin="0,0,0,20"/>
+
+                                <TextBlock Text="Nova terapija"
+                                           FontSize="17"
+                                           FontWeight="SemiBold"
+                                           Foreground="#263238"
+                                           Margin="0,0,0,15"/>
+
+
+                                <!-- LEK / DOZIRANJE / UČESTALOST -->
+
+                                <Grid>
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <StackPanel Grid.Column="0"
+                                                Margin="0,0,5,0">
+
+                                        <TextBlock Text="Naziv leka"
+                                                   Foreground="#78909C"
+                                                   Margin="0,0,0,5"/>
+
+                                        <TextBox Text="{Binding NovaTerapijaNazivLeka,
+                                                               UpdateSourceTrigger=PropertyChanged}"
+                                                 Height="36"
+                                                 Padding="8"/>
+
+                                    </StackPanel>
+
+
+                                    <StackPanel Grid.Column="1"
+                                                Margin="5,0,5,0">
+
+                                        <TextBlock Text="Doziranje"
+                                                   Foreground="#78909C"
+                                                   Margin="0,0,0,5"/>
+
+                                        <TextBox Text="{Binding NovaTerapijaDoziranje,
+                                                               UpdateSourceTrigger=PropertyChanged}"
+                                                 Height="36"
+                                                 Padding="8"/>
+
+                                    </StackPanel>
+
+
+                                    <StackPanel Grid.Column="2"
+                                                Margin="5,0,0,0">
+
+                                        <TextBlock Text="Učestalost"
+                                                   Foreground="#78909C"
+                                                   Margin="0,0,0,5"/>
+
+                                        <TextBox Text="{Binding NovaTerapijaUcestalost,
+                                                               UpdateSourceTrigger=PropertyChanged}"
+                                                 Height="36"
+                                                 Padding="8"/>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+
+                                <!-- DATUMI -->
+
+                                <Grid Margin="0,15,0,0">
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <StackPanel Grid.Column="0"
+                                                Margin="0,0,5,0">
+
+                                        <TextBlock Text="Datum početka"
+                                                   Foreground="#78909C"
+                                                   Margin="0,0,0,5"/>
+
+                                        <DatePicker SelectedDate="{Binding NovaTerapijaDatumPocetka}"
+                                                    Height="36"/>
+
+                                    </StackPanel>
+
+
+                                    <StackPanel Grid.Column="1"
+                                                Margin="5,0,0,0">
+
+                                        <TextBlock Text="Datum završetka"
+                                                   Foreground="#78909C"
+                                                   Margin="0,0,0,5"/>
+
+                                        <DatePicker SelectedDate="{Binding NovaTerapijaDatumZavrsetka}"
+                                                    Height="36"/>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+
+                                <!-- UPUTSTVO -->
+
+                                <TextBlock Text="Uputstvo"
+                                           Foreground="#78909C"
+                                           Margin="0,15,0,5"/>
+
+                                <TextBox Text="{Binding NovaTerapijaUputstvo,
+                                                        UpdateSourceTrigger=PropertyChanged}"
+                                         Height="70"
+                                         Padding="8"
+                                         TextWrapping="Wrap"
+                                         AcceptsReturn="True"/>
+
+
+                                <!-- ČUVANJE -->
+
+                                <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Right"
+                                        Margin="0,15,0,0">                      
+
+                                    <Button Content="Otkaži"
+                                            Width="100"
+                                            Height="38"
+                                            Margin="0,0,10,0"
+                                            Background="#ECEFF1"
+                                            Foreground="#455A64"
+                                            BorderThickness="0"
+                                            Click="OtkaziTerapijuButton_Click"/>
+
+                                    <Button Content="Sačuvaj terapiju"
+                                            Width="150"
+                                            Height="38"
+                                            Background="#1976D2"
+                                            Foreground="White"
+                                            BorderThickness="0"
+                                            Command="{Binding SacuvajTerapijuCommand}"/>    
+
+                                </StackPanel>
+
+                            </StackPanel>
+
+                        </StackPanel>
+
+                    </Border>
+
+                </StackPanel>
+
+            </Grid>
+
+        </StackPanel>
+
+    </ScrollViewer>
+
+</UserControl>

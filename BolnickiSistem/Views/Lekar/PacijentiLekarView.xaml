@@ -1,0 +1,115 @@
+﻿<UserControl x:Class="BolnickiSistem.Views.Lekar.PacijentiLekarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#F4F6F8">
+
+    <Grid Margin="35">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <!-- NASLOV -->
+        <StackPanel Grid.Row="0">
+
+            <TextBlock Text="Moji pacijenti"
+                       FontSize="32"
+                       FontWeight="SemiBold"
+                       Foreground="#263238"/>
+
+            <TextBlock Text="Pretražite i izaberite pacijenta za pregled zdravstvenog kartona."
+                       FontSize="16"
+                       Foreground="#607D8B"
+                       Margin="0,8,0,25"/>
+
+        </StackPanel>
+
+
+        <!-- PRETRAGA -->
+        <Border Grid.Row="1"
+                Background="White"
+                CornerRadius="8"
+                Padding="20"
+                Margin="0,0,0,20">
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Column="0"
+                         Height="42"
+                         FontSize="15"
+                         Padding="10"
+                         Text="{Binding TekstPretrage,
+                                        UpdateSourceTrigger=PropertyChanged}"
+                         ToolTip="Pretražite po broju kartice, JMBG-u, imenu ili prezimenu"/>
+
+                <Button Grid.Column="1"
+                        Content="Osveži"
+                        Width="100"
+                        Height="42"
+                        Margin="10,0,0,0"
+                        Background="#1976D2"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontSize="14"
+                        Command="{Binding OsveziCommand}"/>
+
+            </Grid>
+
+        </Border>
+
+
+        <!-- LISTA PACIJENATA -->
+        <Border Grid.Row="2"
+                Background="White"
+                CornerRadius="8"
+                Padding="20">
+
+            <DataGrid ItemsSource="{Binding Pacijenti}"
+                      SelectedItem="{Binding IzabraniPacijent}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      CanUserAddRows="False"
+                      HeadersVisibility="Column"
+                      GridLinesVisibility="Horizontal"
+                      FontSize="14"
+                      SelectionChanged="PacijentiDataGrid_SelectionChanged">
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="Broj kartice"
+                                        Binding="{Binding BrojZdravstveneKartice}"
+                                        Width="180"/>
+
+                    <DataGridTextColumn Header="JMBG"
+                                        Binding="{Binding JMBG}"
+                                        Width="180"/>
+
+                    <DataGridTextColumn Header="Ime"
+                                        Binding="{Binding Ime}"
+                                        Width="*"/>
+
+                    <DataGridTextColumn Header="Prezime"
+                                        Binding="{Binding Prezime}"
+                                        Width="*"/>
+
+                    <DataGridTextColumn Header="Datum rođenja"
+                                        Binding="{Binding DatumRodjenja, StringFormat=dd.MM.yyyy.}"
+                                        Width="160"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Border>
+
+    </Grid>
+
+</UserControl>

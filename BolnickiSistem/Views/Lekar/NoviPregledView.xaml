@@ -1,0 +1,128 @@
+﻿<UserControl x:Class="BolnickiSistem.Views.Lekar.NoviPregledView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="White">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+        <StackPanel>
+
+            <TextBlock Text="Novi pregled"
+                       FontSize="24"
+                       FontWeight="SemiBold"
+                       Foreground="#263238"
+                       Margin="0,0,0,20"/>
+
+
+            <!-- OSNOVNI PODACI -->
+            <Grid Margin="0,0,0,20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="180"/>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="180"/>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
+
+
+                <TextBlock Grid.Column="0"
+                           Text="Datum pregleda:"
+                           Foreground="#78909C"
+                           VerticalAlignment="Center"/>
+
+                <DatePicker Grid.Column="1"
+                            SelectedDate="{Binding DatumNovogPregleda}"
+                            Height="35"/>
+
+
+                <TextBlock Grid.Column="2"
+                           Text="Datum kontrole:"
+                           Foreground="#78909C"
+                           Margin="30,0,0,0"
+                           VerticalAlignment="Center"/>
+
+                <DatePicker Grid.Column="3"
+                            SelectedDate="{Binding DatumKontrole}"
+                            Height="35"
+                            Margin="30,0,0,0"/>
+
+            </Grid>
+
+
+            <!-- RAZLOG -->
+            <TextBlock Text="Razlog dolaska"
+                       Foreground="#78909C"
+                       Margin="0,0,0,5"/>
+
+            <TextBox Text="{Binding RazlogDolaska,
+                                    UpdateSourceTrigger=PropertyChanged}"
+                     Height="40"
+                     Padding="10"
+                     Margin="0,0,0,15"/>
+
+
+            <!-- SIMPTOMI -->
+            <TextBlock Text="Simptomi"
+                       Foreground="#78909C"
+                       Margin="0,0,0,5"/>
+
+            <TextBox Text="{Binding Simptomi,
+                                    UpdateSourceTrigger=PropertyChanged}"
+                     Height="70"
+                     Padding="10"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto"
+                     Margin="0,0,0,15"/>
+
+
+            <!-- NALAZ -->
+            <TextBlock Text="Nalaz"
+                       Foreground="#78909C"
+                       Margin="0,0,0,5"/>
+
+            <TextBox Text="{Binding Nalaz,
+                                    UpdateSourceTrigger=PropertyChanged}"
+                     Height="90"
+                     Padding="10"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto"
+                     Margin="0,0,0,15"/>
+
+
+            <!-- PREPORUKA -->
+            <TextBlock Text="Preporuka"
+                       Foreground="#78909C"
+                       Margin="0,0,0,5"/>
+
+            <TextBox Text="{Binding Preporuka,
+                                    UpdateSourceTrigger=PropertyChanged}"
+                     Height="70"
+                     Padding="10"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto"
+                     Margin="0,0,0,20"/>
+
+
+            <!-- DUGME -->
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+
+                <Button Content="Sačuvaj pregled"
+                        Width="150"
+                        Height="42"
+                        Background="#1976D2"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontSize="14"
+                        Command="{Binding SacuvajNoviPregledCommand}"/>
+
+            </StackPanel>
+
+        </StackPanel>
+
+    </ScrollViewer>
+
+</UserControl>

@@ -1,0 +1,321 @@
+﻿<UserControl x:Class="BolnickiSistem.Views.Lekar.PocetnaLekarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#F5F7FA">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+        <Grid Margin="30">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <!-- ========================================== -->
+            <!-- NASLOV -->
+            <!-- ========================================== -->
+
+            <StackPanel Grid.Row="0"
+                        Margin="0,0,0,25">
+
+                <TextBlock Text="{Binding PozdravnaPoruka}"
+                           FontSize="28"
+                           FontWeight="SemiBold"
+                           Foreground="#263238"/>
+
+                <TextBlock Text="Pregled vašeg rada i pacijenata"
+                           FontSize="15"
+                           Foreground="#78909C"
+                           Margin="0,6,0,0"/>
+
+            </StackPanel>
+
+
+            <!-- ========================================== -->
+            <!-- STATISTIKE -->
+            <!-- ========================================== -->
+
+            <Grid Grid.Row="1"
+                  Margin="0,0,0,30">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <!-- PACIJENTI -->
+
+                <Border Grid.Column="0"
+                        Background="White"
+                        CornerRadius="10"
+                        Margin="0,0,10,0"
+                        Padding="20"
+                        BorderBrush="#E0E6EA"
+                        BorderThickness="1">
+
+                    <StackPanel>
+
+                        <TextBlock Text="PACIJENTI"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Foreground="#78909C"/>
+
+                        <TextBlock Text="{Binding BrojPacijenata}"
+                                   FontSize="30"
+                                   FontWeight="SemiBold"
+                                   Foreground="#1976D2"
+                                   Margin="0,8,0,0"/>
+
+                        <TextBlock Text="Dodeljeni pacijenti"
+                                   FontSize="13"
+                                   Foreground="#90A4AE"
+                                   Margin="0,3,0,0"/>
+
+                    </StackPanel>
+
+                </Border>
+
+
+                <!-- PREGLEDI -->
+
+                <Border Grid.Column="1"
+                        Background="White"
+                        CornerRadius="10"
+                        Margin="10,0"
+                        Padding="20"
+                        BorderBrush="#E0E6EA"
+                        BorderThickness="1">
+
+                    <StackPanel>
+
+                        <TextBlock Text="PREGLEDI"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Foreground="#78909C"/>
+
+                        <TextBlock Text="{Binding BrojPregleda}"
+                                   FontSize="30"
+                                   FontWeight="SemiBold"
+                                   Foreground="#1976D2"
+                                   Margin="0,8,0,0"/>
+
+                        <TextBlock Text="Ukupno pregleda"
+                                   FontSize="13"
+                                   Foreground="#90A4AE"
+                                   Margin="0,3,0,0"/>
+
+                    </StackPanel>
+
+                </Border>
+
+
+                <!-- DANAS -->
+
+                <Border Grid.Column="2"
+                        Background="White"
+                        CornerRadius="10"
+                        Margin="10,0"
+                        Padding="20"
+                        BorderBrush="#E0E6EA"
+                        BorderThickness="1">
+
+                    <StackPanel>
+
+                        <TextBlock Text="DANAS"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Foreground="#78909C"/>
+
+                        <TextBlock Text="{Binding BrojPregledaDanas}"
+                                   FontSize="30"
+                                   FontWeight="SemiBold"
+                                   Foreground="#1976D2"
+                                   Margin="0,8,0,0"/>
+
+                        <TextBlock Text="Današnji pregledi"
+                                   FontSize="13"
+                                   Foreground="#90A4AE"
+                                   Margin="0,3,0,0"/>
+
+                    </StackPanel>
+
+                </Border>
+
+
+                <!-- KONTROLE -->
+
+                <Border Grid.Column="3"
+                        Background="White"
+                        CornerRadius="10"
+                        Margin="10,0,0,0"
+                        Padding="20"
+                        BorderBrush="#E0E6EA"
+                        BorderThickness="1">
+
+                    <StackPanel>
+
+                        <TextBlock Text="KONTROLE"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Foreground="#78909C"/>
+
+                        <TextBlock Text="{Binding BrojPredstojecihKontrola}"
+                                   FontSize="30"
+                                   FontWeight="SemiBold"
+                                   Foreground="#1976D2"
+                                   Margin="0,8,0,0"/>
+
+                        <TextBlock Text="Predstojeće kontrole"
+                                   FontSize="13"
+                                   Foreground="#90A4AE"
+                                   Margin="0,3,0,0"/>
+
+                    </StackPanel>
+
+                </Border>
+
+            </Grid>
+
+
+            <!-- ========================================== -->
+            <!-- DONJI DEO -->
+            <!-- ========================================== -->
+
+            <Grid Grid.Row="2">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <!-- ====================================== -->
+                <!-- POSLEDNJI PREGLEDI -->
+                <!-- ====================================== -->
+
+                <Border Grid.Column="0"
+                        Background="White"
+                        CornerRadius="10"
+                        Margin="0,0,10,0"
+                        Padding="20"
+                        BorderBrush="#E0E6EA"
+                        BorderThickness="1">
+
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+
+                        <TextBlock Text="Poslednji pregledi"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Foreground="#263238"
+                                   Margin="0,0,0,15"/>
+
+
+                        <DataGrid Grid.Row="1"
+                                  ItemsSource="{Binding PoslednjiPregledi}"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  CanUserAddRows="False"
+                                  HeadersVisibility="Column"
+                                  GridLinesVisibility="Horizontal"
+                                  BorderThickness="0"
+                                  FontSize="13">
+
+                            <DataGrid.Columns>
+
+                                <DataGridTextColumn Header="Datum"
+                                                    Binding="{Binding DatumPregleda,
+                                                              StringFormat=dd.MM.yyyy.}"
+                                                    Width="120"/>
+
+                                <DataGridTextColumn Header="Pacijent"
+                                                    Binding="{Binding Pacijent.Ime}"
+                                                    Width="*"/>
+
+                                <DataGridTextColumn Header="Razlog dolaska"
+                                                    Binding="{Binding RazlogDolaska}"
+                                                    Width="*"/>
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+
+                    </Grid>
+
+                </Border>
+
+
+                <!-- ====================================== -->
+                <!-- PREDSTOJEĆE KONTROLE -->
+                <!-- ====================================== -->
+
+                <Border Grid.Column="1"
+                        Background="White"
+                        CornerRadius="10"
+                        Margin="10,0,0,0"
+                        Padding="20"
+                        BorderBrush="#E0E6EA"
+                        BorderThickness="1">
+
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+
+                        <TextBlock Text="Predstojeće kontrole"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Foreground="#263238"
+                                   Margin="0,0,0,15"/>
+
+
+                        <DataGrid Grid.Row="1"
+                                  ItemsSource="{Binding PredstojeceKontrole}"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  CanUserAddRows="False"
+                                  HeadersVisibility="None"
+                                  GridLinesVisibility="None"
+                                  BorderThickness="0"
+                                  FontSize="13">
+
+                            <DataGrid.Columns>
+
+                                <DataGridTextColumn Header="Pacijent"
+                                                    Binding="{Binding Pacijent.Ime}"
+                                                    Width="*"/>
+
+                                <DataGridTextColumn Header="Datum"
+                                                    Binding="{Binding DatumKontrole,
+                                                              StringFormat=dd.MM.yyyy.}"
+                                                    Width="110"/>
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+
+                    </Grid>
+
+                </Border>
+
+            </Grid>
+
+        </Grid>
+
+    </ScrollViewer>
+
+</UserControl>

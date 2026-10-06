@@ -1,0 +1,95 @@
+﻿<Window x:Class="BolnickiSistem.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Bolnički sistem - Prijava"
+        Height="500"
+        Width="850"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#F4F6F8">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Leva strana -->
+        <Border Grid.Column="0"
+                Background="#1976D2">
+
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+
+                <TextBlock Text="E-Bolnica"
+                           Foreground="White"
+                           FontSize="36"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"/>
+
+             
+
+                <TextBlock Text="Informacioni sistem bolnice"
+                           Foreground="White"
+                           FontSize="16"
+                           Margin="0,15,0,0"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Desna strana -->
+        <Grid Grid.Column="1"
+              Background="White">
+
+            <StackPanel Width="300"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+
+                <TextBlock Text="Prijava"
+                           FontSize="30"
+                           FontWeight="SemiBold"
+                           Foreground="#263238"
+                           Margin="0,0,0,35"/>
+
+                <TextBlock Text="Korisničko ime"
+                           FontSize="14"
+                           Foreground="#455A64"
+                           Margin="0,0,0,6"/>
+
+                <TextBox x:Name="KorisnickoImeTextBox"
+                         Height="40"
+                         FontSize="16"
+                         Padding="10"
+                         Margin="0,0,0,20"/>
+
+                <TextBlock Text="Lozinka"
+                           FontSize="14"
+                           Foreground="#455A64"
+                           Margin="0,0,0,6"/>
+
+                <PasswordBox x:Name="LozinkaPasswordBox"
+                             Height="40"
+                             FontSize="16"
+                             Padding="10"
+                             Margin="0,0,0,10"/>
+
+                <TextBlock x:Name="PorukaTextBlock"
+                           Text=""
+                           Foreground="#D32F2F"
+                           FontSize="13"
+                           TextWrapping="Wrap"
+                           Margin="0,0,0,15"/>
+
+                <Button Content="PRIJAVI SE"
+                        Height="45"
+                        FontSize="15"
+                        FontWeight="SemiBold"
+                        Background="#1976D2"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="PrijavaButton_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="BolnickiSistem.Views.Admin.PocetnaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Grid.Row="0"
+                   Text="Kontrolna tabla"
+                   FontSize="32"
+                   FontWeight="SemiBold"
+                   Foreground="#263238"/>
+
+
+        <TextBlock Grid.Row="1"
+                   Text="Dobrodošli u administrativni deo bolničkog sistema."
+                   FontSize="16"
+                   Foreground="#607D8B"
+                   Margin="0,8,0,30"/>
+
+
+        <UniformGrid Grid.Row="2"
+                     Columns="3"
+                     VerticalAlignment="Top">
+
+            <Border Height="150"
+                    Margin="0,0,15,0"
+                    Background="White"
+                    CornerRadius="8">
+
+                <StackPanel Margin="20">
+
+                    <TextBlock Text="Korisnici"
+                               FontSize="18"
+                               FontWeight="SemiBold"/>
+
+                    <TextBlock Text="Upravljanje korisničkim nalozima i lekarima."
+                               TextWrapping="Wrap"
+                               Foreground="#607D8B"
+                               Margin="0,12,0,0"/>
+
+                </StackPanel>
+
+            </Border>
+
+
+            <Border Height="150"
+                    Margin="15,0"
+                    Background="White"
+                    CornerRadius="8">
+
+                <StackPanel Margin="20">
+
+                    <TextBlock Text="Pacijenti"
+                               FontSize="18"
+                               FontWeight="SemiBold"/>
+
+                    <TextBlock Text="Pregled i upravljanje osnovnim podacima pacijenata."
+                               TextWrapping="Wrap"
+                               Foreground="#607D8B"
+                               Margin="0,12,0,0"/>
+
+                </StackPanel>
+
+            </Border>
+
+
+            <Border Height="150"
+                    Margin="15,0,0,0"
+                    Background="White"
+                    CornerRadius="8">
+
+                <StackPanel Margin="20">
+
+                    <TextBlock Text="Izveštaji"
+                               FontSize="18"
+                               FontWeight="SemiBold"/>
+
+                    <TextBlock Text="Osnovna statistika i izveštaji sistema."
+                               TextWrapping="Wrap"
+                               Foreground="#607D8B"
+                               Margin="0,12,0,0"/>
+
+                </StackPanel>
+
+            </Border>
+
+        </UniformGrid>
+
+    </Grid>
+
+</UserControl>

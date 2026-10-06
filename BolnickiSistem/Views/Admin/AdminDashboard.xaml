@@ -1,0 +1,122 @@
+﻿<Window x:Class="BolnickiSistem.Views.Admin.AdminDashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Bolnički sistem - Administrator"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        Background="#F4F6F8">
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="230"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <!-- LEVI SIDEBAR -->
+
+        <Border Grid.Column="0"
+                Background="#263238">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="70"/>
+                </Grid.RowDefinitions>
+
+
+                <!-- LOGO -->
+
+                <StackPanel Grid.Row="0"
+                            VerticalAlignment="Center"
+                            Margin="25,0">
+
+                    <TextBlock Text="E-Bolnica"
+                               Foreground="White"
+                               FontSize="24"
+                               FontWeight="Bold"/>
+
+                    <TextBlock Text="Administrator"
+                               Foreground="#B0BEC5"
+                               FontSize="13"
+                               Margin="0,5,0,0"/>
+
+                </StackPanel>
+
+
+                <!-- NAVIGACIJA -->
+
+                <StackPanel Grid.Row="1"
+                            Margin="15,20">
+
+                    <Button Content="Početna"
+                            Height="45"
+                            Margin="0,0,0,8"
+                            Background="Transparent"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontSize="15"
+                            Click="PocetnaButton_Click"/>
+
+                    <Button Content="Korisnici"
+                            Height="45"
+                            Margin="0,0,0,8"
+                            Background="Transparent"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontSize="15"
+                            Click="KorisniciButton_Click"/>
+
+                    <Button Content="Pacijenti"
+                            Height="45"
+                            Margin="0,0,0,8"
+                            Background="Transparent"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontSize="15"
+                            Click="PacijentiButton_Click"/>
+
+                    <Button Content="Izveštaji"
+                            Height="45"
+                            Margin="0,0,0,8"
+                            Background="Transparent"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontSize="15"
+                            Click="IzvestajiButton_Click"/>
+
+                </StackPanel>
+
+
+                <!-- ODJAVA -->
+
+                <Button Grid.Row="2"
+                        Content="Odjava"
+                        Margin="15,10"
+                        Height="40"
+                        Background="#455A64"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontSize="14"
+                        Click="OdjavaButton_Click"/>
+
+            </Grid>
+
+        </Border>
+
+
+        <!-- GLAVNI SADRŽAJ -->
+
+        <Grid Grid.Column="1"
+              Margin="35">
+
+            <ContentControl x:Name="GlavniSadrzaj"/>
+
+        </Grid>
+
+    </Grid>
+
+</Window>

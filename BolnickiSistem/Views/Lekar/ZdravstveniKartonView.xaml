@@ -1,0 +1,931 @@
+﻿<UserControl x:Class="BolnickiSistem.Views.Lekar.ZdravstveniKartonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#F4F6F8"
+             FontSize="18">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+
+        <Grid Margin="35">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="390"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+
+            <!-- ====================================================== -->
+            <!-- GORNJI NASLOV -->
+            <!-- ====================================================== -->
+
+            <Grid Grid.Row="0"
+                  Margin="0,0,0,20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                        Content="← Nazad na pacijente"
+                        Height="40"
+                        Padding="15,0"
+                        Background="White"
+                        Foreground="#1976D2"
+                        BorderBrush="#1976D2"
+                        BorderThickness="1"
+                        FontSize="14"
+                        Click="NazadButton_Click"/>
+
+                <StackPanel Grid.Column="1"
+                            Margin="25,0,0,0">
+
+                    <TextBlock Text="Zdravstveni karton"
+                               FontSize="30"
+                               FontWeight="SemiBold"
+                               Foreground="#263238"/>
+
+                    <TextBlock FontSize="16"
+                               Foreground="#607D8B"
+                               Margin="0,5,0,0">
+
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Pacijent.Ime"/>
+                                <Binding Path="Pacijent.Prezime"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+
+                    </TextBlock>
+
+                </StackPanel>
+
+            </Grid>
+
+
+            <!-- ====================================================== -->
+            <!-- GORNJI DEO: PACIJENT + PREGLEDI -->
+            <!-- ====================================================== -->
+
+            <Grid Grid.Row="1"
+                  Margin="0,0,0,20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.60*"/>
+                    <ColumnDefinition Width="1.40*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <!-- ================================================== -->
+                <!-- PODACI O PACIJENTU -->
+                <!-- ================================================== -->
+
+                <Border Grid.Column="0"
+                        Background="White"
+                        CornerRadius="8"
+                        Padding="25">
+
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+
+                        <TextBlock Grid.Row="0"
+                                   Text="Podaci o pacijentu"
+                                   FontSize="21"
+                                   FontWeight="SemiBold"
+                                   Foreground="#263238"
+                                   Margin="0,0,0,20"/>
+
+
+                        <Grid Grid.Row="1">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="140"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+
+                            <!-- BROJ KARTICE -->
+
+                            <TextBlock Grid.Row="0"
+                                       Grid.Column="0"
+                                       Text="Broj kartice:"
+                                       Foreground="#78909C"/>
+
+                            <TextBlock Grid.Row="0"
+                                       Grid.Column="1"
+                                       Text="{Binding Pacijent.BrojZdravstveneKartice}"
+                                       FontWeight="SemiBold"/>
+
+
+                            <!-- JMBG -->
+
+                            <TextBlock Grid.Row="0"
+                                       Grid.Column="2"
+                                       Text="JMBG:"
+                                       Foreground="#78909C"/>
+
+                            <TextBlock Grid.Row="0"
+                                       Grid.Column="3"
+                                       Text="{Binding Pacijent.JMBG}"
+                                       FontWeight="SemiBold"/>
+
+
+                            <!-- IME -->
+
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="0"
+                                       Text="Ime:"
+                                       Foreground="#78909C"
+                                       Margin="0,14,0,0"/>
+
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="1"
+                                       Text="{Binding Pacijent.Ime}"
+                                       Margin="0,14,0,0"/>
+
+
+                            <!-- PREZIME -->
+
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="2"
+                                       Text="Prezime:"
+                                       Foreground="#78909C"
+                                       Margin="0,14,0,0"/>
+
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="3"
+                                       Text="{Binding Pacijent.Prezime}"
+                                       Margin="0,14,0,0"/>
+
+
+                            <!-- DATUM ROĐENJA -->
+
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="0"
+                                       Text="Datum rođenja:"
+                                       Foreground="#78909C"
+                                       Margin="0,14,0,0"/>
+
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="1"
+                                       Text="{Binding Pacijent.DatumRodjenja, StringFormat=dd.MM.yyyy.}"
+                                       Margin="0,14,0,0"/>
+
+
+                            <!-- POL -->
+
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="2"
+                                       Text="Pol:"
+                                       Foreground="#78909C"
+                                       Margin="0,14,0,0"/>
+
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="3"
+                                       Text="{Binding Pacijent.Pol}"
+                                       Margin="0,14,0,0"/>
+
+
+                            <!-- ADRESA -->
+
+                            <TextBlock Grid.Row="3"
+                                       Grid.Column="0"
+                                       Text="Adresa:"
+                                       Foreground="#78909C"
+                                       Margin="0,14,0,0"/>
+
+                            <TextBlock Grid.Row="3"
+                                       Grid.Column="1"
+                                       Text="{Binding Pacijent.Adresa}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,14,0,0"/>
+
+
+                            <!-- TELEFON -->
+
+                            <TextBlock Grid.Row="3"
+                                       Grid.Column="2"
+                                       Text="Telefon:"
+                                       Foreground="#78909C"
+                                       Margin="0,14,0,0"/>
+
+                            <TextBlock Grid.Row="3"
+                                       Grid.Column="3"
+                                       Text="{Binding Pacijent.Telefon}"
+                                       Margin="0,14,0,0"/>
+
+
+                            <!-- EMAIL -->
+
+                            <TextBlock Grid.Row="4"
+                                       Grid.Column="0"
+                                       Text="Email:"
+                                       Foreground="#78909C"
+                                       Margin="0,14,0,0"/>
+
+                            <TextBlock Grid.Row="4"
+                                       Grid.Column="1"
+                                       Grid.ColumnSpan="3"
+                                       Text="{Binding Pacijent.Email}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,14,0,0"/>
+                            
+                            
+                            
+
+                            <TextBlock Grid.Row="4"
+                                       Grid.Column="2"
+                                       Text="Hronične bolesti:"
+                                       Foreground="#78909C"
+                                       Margin="0,14,0,0"/>
+                            
+                            
+                            <TextBlock Grid.Row="4"
+                                       Grid.Column="3"
+                                       Text="{Binding Pacijent.HronicneBolesti}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,14,0,0"/>
+
+
+                            <!-- KRVNA GRUPA -->
+
+                            <TextBlock Grid.Row="5"
+                                       Grid.Column="0"
+                                       Text="Krvna grupa:"
+                                       Foreground="#78909C"
+                                       Margin="0,14,0,0"/>
+
+                            <TextBlock Grid.Row="5"
+                                       Grid.Column="1"
+                                       Text="{Binding Pacijent.KrvnaGrupa}"
+                                       Margin="0,14,0,0"/>
+
+
+                            <!-- ALERGIJE -->
+
+                            <TextBlock Grid.Row="5"
+                                       Grid.Column="2"
+                                       Text="Alergije:"
+                                       Foreground="#78909C"
+                                       Margin="0,14,0,0"/>
+
+                            <TextBlock Grid.Row="5"
+                                       Grid.Column="3"
+                                       Text="{Binding Pacijent.Alergije}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,14,0,0"/>
+
+                        </Grid>
+
+                    </Grid>
+
+                </Border>
+
+
+                <!-- ================================================== -->
+                <!-- ISTORIJA PREGLEDA -->
+                <!-- ================================================== -->
+
+                <Border Grid.Column="1"
+                        Background="White"
+                        CornerRadius="8"
+                        Padding="25"
+                        Margin="20,0,0,0">
+
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+
+                        <!-- NASLOV + DUGME -->
+
+                        <Grid Grid.Row="0"
+                              Margin="0,0,0,15">
+
+                            <TextBlock Text="Istorija pregleda"
+                                       FontSize="21"
+                                       FontWeight="SemiBold"
+                                       Foreground="#263238"
+                                       VerticalAlignment="Center"/>
+
+                            <Button Content="+ Novi pregled"
+                                    HorizontalAlignment="Right"
+                                    Height="38"
+                                    Padding="15,0"
+                                    Background="#1976D2"
+                                    Foreground="White"
+                                    BorderThickness="0"
+                                    Click="NoviPregledButton_Click"/>
+
+                        </Grid>
+
+
+                        <!-- LISTA -->
+
+                        <DataGrid x:Name="PreglediDataGrid"
+                                  Grid.Row="1"
+                                  ItemsSource="{Binding Pregledi}"
+                                  SelectedItem="{Binding IzabraniPregled, Mode=TwoWay}"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  CanUserAddRows="False"
+                                  HeadersVisibility="Column"
+                                  GridLinesVisibility="Horizontal"
+                                  FontSize="14"
+                                  SelectionChanged="PreglediDataGrid_SelectionChanged">
+
+                            <DataGrid.Columns>
+
+                                <DataGridTextColumn Header="Datum"
+                                                    Binding="{Binding DatumPregleda,
+                                                              StringFormat=dd.MM.yyyy.}"
+                                                    Width="130"/>
+
+                                <DataGridTextColumn Header="Lekar"
+                                                    Binding="{Binding Lekar.ImePrezime}"
+                                                    Width="200"/>
+
+                                <DataGridTextColumn Header="Razlog dolaska"
+                                                    Binding="{Binding RazlogDolaska}"
+                                                    Width="*"/>
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+
+                    </Grid>
+
+                </Border>
+
+            </Grid>
+
+
+            <!-- ================================================= -->
+            <!-- DINAMIČKI SADRŽAJ KARTONA -->
+            <!-- ================================================= -->
+
+            <Border Grid.Row="2"
+                    Background="White"
+                    CornerRadius="8"
+                    Padding="25"
+                    Margin="0,0,0,20"
+                    MinHeight="350">
+
+                <ContentControl x:Name="SadrzajKartona"/>
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- LABORATORIJSKI NALAZI -->
+            <!-- ================================================= -->
+
+            <Border Grid.Row="3"
+                    Background="White"
+                    CornerRadius="8"
+                    Padding="25">
+
+                <StackPanel>
+
+                    <!-- NASLOV + DUGME -->
+
+                    <Grid Margin="0,0,0,15">
+
+                        <TextBlock Text="Laboratorijski nalazi"
+                                   FontSize="21"
+                                   FontWeight="SemiBold"
+                                   Foreground="#263238"
+                                   VerticalAlignment="Center"/>
+
+                        <Button Content="+ Dodaj nalaz"
+                                HorizontalAlignment="Right"
+                                Height="38"
+                                Padding="15,0"
+                                Background="#1976D2"
+                                Foreground="White"
+                                BorderThickness="0"
+                                Click="DodajLaboratorijskiNalazButton_Click"/>
+
+                    </Grid>
+
+
+                    <!-- ================================================= -->
+                    <!-- LISTA LABORATORIJSKIH NALAZA -->
+                    <!-- ================================================= -->
+
+                    <DataGrid x:Name="LaboratorijskiNalaziDataGrid"
+                              ItemsSource="{Binding LaboratorijskiNalazi}"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              HeadersVisibility="Column"
+                              GridLinesVisibility="Horizontal"
+                              FontSize="14"
+                              Height="250">
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Datum"
+                                                Binding="{Binding DatumAnalize,
+                                                          StringFormat=dd.MM.yyyy.}"
+                                                Width="120"/>
+
+                            <DataGridTextColumn Header="Analiza"
+                                                Binding="{Binding NazivAnalize}"
+                                                Width="180"/>
+
+                            <DataGridTextColumn Header="Rezultat"
+                                                Binding="{Binding Rezultat}"
+                                                Width="130"/>
+
+                            <DataGridTextColumn Header="Jedinica"
+                                                Binding="{Binding Jedinica}"
+                                                Width="100"/>
+
+                            <DataGridTextColumn Header="Referentna vrednost"
+                                                Binding="{Binding ReferentnaVrednost}"
+                                                Width="180"/>
+
+                            <DataGridTextColumn Header="Povezan pregled"
+                                                Binding="{Binding Pregled.DatumPregleda,
+                                                          StringFormat=dd.MM.yyyy.}"
+                                                Width="140"/>
+
+                            <DataGridTextColumn Header="Napomena"
+                                                Binding="{Binding Napomena}"
+                                                Width="*"/>
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+
+                    <!-- ================================================= -->
+                    <!-- FORMA ZA NOVI LABORATORIJSKI NALAZ -->
+                    <!-- ================================================= -->
+
+                    <Border x:Name="NoviLaboratorijskiNalazPanel"
+                            Background="#F4F6F8"
+                            CornerRadius="6"
+                            Padding="20"
+                            Margin="0,20,0,0"
+                            Visibility="Collapsed">
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+
+                            <!-- NAZIV ANALIZE -->
+
+                            <StackPanel Grid.Row="0"
+                                        Grid.Column="0"
+                                        Margin="0,0,10,15">
+
+                                <TextBlock Text="Naziv analize"
+                                           FontSize="14"
+                                           Foreground="#607D8B"
+                                           Margin="0,0,0,5"/>
+
+                                <TextBox Text="{Binding NoviLaboratorijskiNalazNazivAnalize,
+                                                        UpdateSourceTrigger=PropertyChanged}"
+                                         Height="38"
+                                         Padding="10,5"/>
+
+                            </StackPanel>
+
+
+                            <!-- REZULTAT -->
+
+                            <StackPanel Grid.Row="0"
+                                        Grid.Column="1"
+                                        Margin="10,0,10,15">
+
+                                <TextBlock Text="Rezultat"
+                                           FontSize="14"
+                                           Foreground="#607D8B"
+                                           Margin="0,0,0,5"/>
+
+                                <TextBox Text="{Binding NoviLaboratorijskiNalazRezultat,
+                                                        UpdateSourceTrigger=PropertyChanged}"
+                                         Height="38"
+                                         Padding="10,5"/>
+
+                            </StackPanel>
+
+
+                            <!-- JEDINICA -->
+
+                            <StackPanel Grid.Row="0"
+                                        Grid.Column="2"
+                                        Margin="10,0,0,15">
+
+                                <TextBlock Text="Jedinica"
+                                           FontSize="14"
+                                           Foreground="#607D8B"
+                                           Margin="0,0,0,5"/>
+
+                                <TextBox Text="{Binding NoviLaboratorijskiNalazJedinica,
+                                                        UpdateSourceTrigger=PropertyChanged}"
+                                         Height="38"
+                                         Padding="10,5"/>
+
+                            </StackPanel>
+
+
+                            <!-- REFERENTNA VREDNOST -->
+
+                            <StackPanel Grid.Row="1"
+                                        Grid.Column="0"
+                                        Margin="0,0,10,15">
+
+                                <TextBlock Text="Referentna vrednost"
+                                           FontSize="14"
+                                           Foreground="#607D8B"
+                                           Margin="0,0,0,5"/>
+
+                                <TextBox Text="{Binding NoviLaboratorijskiNalazReferentnaVrednost,
+                                                        UpdateSourceTrigger=PropertyChanged}"
+                                         Height="38"
+                                         Padding="10,5"/>
+
+                            </StackPanel>
+
+
+                            <!-- DATUM ANALIZE -->
+
+                            <StackPanel Grid.Row="1"
+                                        Grid.Column="1"
+                                        Margin="10,0,10,15">
+
+                                <TextBlock Text="Datum analize"
+                                           FontSize="14"
+                                           Foreground="#607D8B"
+                                           Margin="0,0,0,5"/>
+
+                                <DatePicker SelectedDate="{Binding NoviLaboratorijskiNalazDatumAnalize,
+                                                                   Mode=TwoWay}"
+                                            Height="38"/>
+
+                            </StackPanel>
+
+
+                            <!-- POVEZAN PREGLED -->
+
+                            <StackPanel Grid.Row="1"
+                                Grid.Column="2"
+                                Margin="10,0,0,15">
+
+                                <TextBlock Text="Povezan pregled"
+                                    FontSize="14"
+                                    Foreground="#607D8B"
+                                    Margin="0,0,0,5"/>       
+
+                                <ComboBox ItemsSource="{Binding Pregledi}"
+                                          SelectedItem="{Binding IzabraniPregledZaLaboratorijskiNalaz,Mode=TwoWay}"
+                                          DisplayMemberPath="DatumPregleda"
+                                          Height="38"/>
+
+                            </StackPanel>
+
+
+                            <!-- NAPOMENA -->
+
+                            <StackPanel Grid.Row="2"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="3"
+                                        Margin="0,0,0,15">
+
+                                <TextBlock Text="Napomena"
+                                           FontSize="14"
+                                           Foreground="#607D8B"
+                                           Margin="0,0,0,5"/>
+
+                                <TextBox Text="{Binding NoviLaboratorijskiNalazNapomena,UpdateSourceTrigger=PropertyChanged}"
+                                         Height="70"
+                                         Padding="10"
+                                         TextWrapping="Wrap"
+                                         AcceptsReturn="True"/>
+
+                            </StackPanel>
+
+
+                            <!-- DUGMAD -->
+
+                            <StackPanel Grid.Row="3"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="3"
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Right">
+
+                                <Button Content="Otkaži"
+                                        Height="38"
+                                        Padding="20,0"
+                                        Margin="0,0,10,0"
+                                        Background="White"
+                                        Foreground="#607D8B"
+                                        BorderBrush="#B0BEC5"
+                                        Click="OtkaziLaboratorijskiNalazButton_Click"/>
+
+                                <Button Content="Sačuvaj nalaz"
+                                        Height="38"
+                                        Padding="20,0"
+                                        Background="#1976D2"
+                                        Foreground="White"
+                                        BorderThickness="0"
+                                        Command="{Binding SacuvajLaboratorijskiNalazCommand}"/>
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Border>
+
+                </StackPanel>
+
+                
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- DOKUMENTI -->
+            <!-- ================================================= -->
+
+            <Border Grid.Row="4"
+        Background="White"
+        CornerRadius="8"
+        Padding="25"
+        Margin="0,20,0,0">
+
+                <StackPanel>
+
+                    <Grid Margin="0,0,0,15">
+
+                        <TextBlock Text="Dokumenti"
+                       FontSize="21"
+                       FontWeight="SemiBold"
+                       Foreground="#263238"
+                       VerticalAlignment="Center"/>
+
+                        <Button Content="+ Dodaj dokument"
+                    HorizontalAlignment="Right"
+                    Height="38"
+                    Padding="15,0"
+                    Background="#1976D2"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Click="DodajDokumentButton_Click"/>
+
+                    </Grid>
+
+
+                    <!-- LISTA DOKUMENATA -->
+
+                    <DataGrid x:Name="DokumentiDataGrid"
+                  ItemsSource="{Binding Dokumenti}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  HeadersVisibility="Column"
+                  GridLinesVisibility="Horizontal"
+                  FontSize="14"
+                  Height="230">
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Naziv"
+                                    Binding="{Binding Naziv}"
+                                    Width="200"/>
+
+                            <DataGridTextColumn Header="Tip"
+                                    Binding="{Binding TipDokumenta}"
+                                    Width="120"/>
+
+                            <DataGridTextColumn Header="Datum"
+                                    Binding="{Binding DatumDodavanja,StringFormat=dd.MM.yyyy.}"
+                                    Width="130"/>
+
+                            <DataGridTextColumn Header="Pregled"
+                                    Binding="{Binding Pregled.DatumPregleda,StringFormat=dd.MM.yyyy.}"
+                                    Width="130"/>
+
+                            <DataGridTextColumn Header="Putanja"
+                                    Binding="{Binding PutanjaDoFajla}"
+                                    Width="*"/>
+
+                            <DataGridTemplateColumn Header=""
+                                         Width="100">
+
+                                <DataGridTemplateColumn.CellTemplate>
+
+                                    <DataTemplate>
+
+                                        <Button Content="Otvori"
+                                    Padding="10,5"
+                                    Background="#E3F2FD"
+                                    Foreground="#1976D2"
+                                    BorderThickness="0"
+                                    Tag="{Binding}"
+                                    Click="OtvoriDokumentButton_Click"/>
+
+                                    </DataTemplate>
+
+                                </DataGridTemplateColumn.CellTemplate>
+
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+
+                    <!-- FORMA ZA NOVI DOKUMENT -->
+
+                    <Border x:Name="NoviDokumentPanel"
+                Visibility="Collapsed"
+                Background="#F8FAFC"
+                BorderBrush="#E0E0E0"
+                BorderThickness="1"
+                CornerRadius="6"
+                Padding="20"
+                Margin="0,20,0,0">
+
+                        <StackPanel>
+
+                            <TextBlock Text="Novi dokument"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           Foreground="#263238"
+                           Margin="0,0,0,15"/>
+
+
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+
+                                    <ColumnDefinition Width="180"/>
+
+                                    <ColumnDefinition Width="*"/>
+
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+
+                                    <RowDefinition Height="Auto"/>
+
+                                    <RowDefinition Height="Auto"/>
+
+                                    <RowDefinition Height="Auto"/>
+
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+
+
+                                <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Naziv:"
+                               VerticalAlignment="Center"
+                               Margin="0,0,10,10"/>
+
+                                <TextBox Grid.Row="0"
+                             Grid.Column="1"
+                             Text="{Binding NoviDokumentNaziv,UpdateSourceTrigger=PropertyChanged}"
+                             Height="35"
+                             Margin="0,0,0,10"/>
+
+
+                                <TextBlock Grid.Row="1"
+                               Grid.Column="0"
+                               Text="Tip dokumenta:"
+                               VerticalAlignment="Center"
+                               Margin="0,0,10,10"/>
+
+                                <TextBox Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding NoviDokumentTip,UpdateSourceTrigger=PropertyChanged}"
+                            Height="35"
+                            Margin="0,0,0,10"/>
+
+
+                                <TextBlock Grid.Row="2"
+                               Grid.Column="0"
+                               Text="Povezan pregled:"
+                               VerticalAlignment="Center"
+                               Margin="0,0,10,10"/>
+
+                                <ComboBox Grid.Row="2"
+                              Grid.Column="1"
+                              ItemsSource="{Binding Pregledi}"
+                              SelectedItem="{Binding IzabraniPregledZaDokument,Mode=TwoWay}"
+                              DisplayMemberPath="DatumPregleda"
+                              Height="35"
+                              Margin="0,0,0,10"/>
+
+
+                                <TextBlock Grid.Row="3"
+                               Grid.Column="0"
+                               Text="Fajl:"
+                               VerticalAlignment="Center"
+                               Margin="0,0,10,0"/>
+
+                                <Grid Grid.Row="3"
+                            Grid.Column="1">
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="*"/>
+
+                                        <ColumnDefinition Width="120"/>
+
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <TextBox Grid.Column="0"
+                                 Text="{Binding NoviDokumentPutanja}"
+                                 IsReadOnly="True"
+                                 Height="35"/>
+
+                                    <Button Grid.Column="1"
+                                Content="Izaberi fajl"
+                                Margin="10,0,0,0"
+                                Height="35"
+                                Click="IzaberiDokumentButton_Click"/>
+
+                                </Grid>
+
+                            </Grid>
+
+
+                            <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            Margin="0,20,0,0">
+
+                                <Button Content="Otkaži"
+                            Width="100"
+                            Height="38"
+                            Margin="0,0,10,0"
+                            Background="#E5E7EB"
+                            Foreground="#374151"
+                            BorderThickness="0"
+                            Click="OtkaziDokumentButton_Click"/>
+
+                                <Button Content="Sačuvaj dokument"
+                            Width="150"
+                            Height="38"
+                            Background="#1976D2"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Command="{Binding SacuvajDokumentCommand}"/>
+
+                            </StackPanel>
+
+                        </StackPanel>
+
+                    </Border>
+
+                </StackPanel>
+
+            </Border>
+
+
+        </Grid>
+
+    </ScrollViewer>
+
+</UserControl>

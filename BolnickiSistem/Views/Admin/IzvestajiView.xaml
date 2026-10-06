@@ -1,0 +1,744 @@
+﻿<UserControl x:Class="BolnickiSistem.Views.Admin.IzvestajiView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#EEF3F8">
+
+    <UserControl.Resources>
+
+        <!-- ========================================================= -->
+        <!-- BOJE -->
+        <!-- ========================================================= -->
+
+        <SolidColorBrush x:Key="TamnaPlava" Color="#163A5F"/>
+        <SolidColorBrush x:Key="Plava" Color="#2563EB"/>
+        <SolidColorBrush x:Key="SvetloPlava" Color="#EAF2FF"/>
+
+        <SolidColorBrush x:Key="Bela" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="PozadinaSekcije" Color="#F7F9FC"/>
+
+        <SolidColorBrush x:Key="Granica" Color="#D9E2EC"/>
+        <SolidColorBrush x:Key="Tekst" Color="#172033"/>
+        <SolidColorBrush x:Key="SporedniTekst" Color="#64748B"/>
+
+
+        <!-- ========================================================= -->
+        <!-- BUTTON -->
+        <!-- ========================================================= -->
+
+        <Style TargetType="Button">
+
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="Padding" Value="18,6"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="{StaticResource Plava}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+
+        </Style>
+
+
+        <!-- ========================================================= -->
+        <!-- DATE PICKER -->
+        <!-- ========================================================= -->
+
+        <Style TargetType="DatePicker">
+
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Granica}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+
+        </Style>
+
+
+        <!-- ========================================================= -->
+        <!-- DATAGRID -->
+        <!-- ========================================================= -->
+
+        <Style TargetType="DataGrid">
+
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="CanUserDeleteRows" Value="False"/>
+            <Setter Property="CanUserResizeRows" Value="False"/>
+            <Setter Property="CanUserSortColumns" Value="True"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="GridLinesVisibility" Value="None"/>
+
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+
+            <Setter Property="RowBackground" Value="White"/>
+            <Setter Property="AlternatingRowBackground" Value="#F8FAFC"/>
+
+            <Setter Property="FontSize" Value="13"/>
+
+        </Style>
+
+
+        <!-- ========================================================= -->
+        <!-- DATAGRID HEADER -->
+        <!-- ========================================================= -->
+
+        <Style TargetType="DataGridColumnHeader">
+
+            <Setter Property="Background" Value="#EAF0F6"/>
+            <Setter Property="Foreground" Value="#40536A"/>
+
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+
+            <Setter Property="Padding" Value="12,9"/>
+
+            <Setter Property="BorderThickness" Value="0"/>
+
+        </Style>
+
+
+        <!-- ========================================================= -->
+        <!-- DATAGRID CELL -->
+        <!-- ========================================================= -->
+
+        <Style TargetType="DataGridCell">
+
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="BorderThickness" Value="0"/>
+
+            <Setter Property="Foreground" Value="#243447"/>
+
+        </Style>
+
+    </UserControl.Resources>
+
+
+    <!-- ============================================================= -->
+    <!-- GLAVNI SADRŽAJ -->
+    <!-- ============================================================= -->
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+
+        <Grid Margin="30">
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+
+
+            <!-- ===================================================== -->
+            <!-- ZAGLAVLJE -->
+            <!-- ===================================================== -->
+
+            <Border Grid.Row="0"
+                    Background="{StaticResource TamnaPlava}"
+                    CornerRadius="12"
+                    Padding="24"
+                    Margin="0,0,0,20">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+
+                    </Grid.ColumnDefinitions>
+
+
+                    <StackPanel>
+
+                        <TextBlock Text="IZVEŠTAJI I STATISTIKA"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Foreground="#BBD4EF"/>
+
+                        <TextBlock Text="Pregled bolničkog sistema"
+                                   FontSize="26"
+                                   FontWeight="Bold"
+                                   Foreground="White"
+                                   Margin="0,4,0,0"/>
+
+                        <TextBlock Text="Statistički pregled pacijenata, lekara, pregleda i dokumentacije"
+                                   FontSize="13"
+                                   Foreground="#D7E5F3"
+                                   Margin="0,5,0,0"/>
+
+                    </StackPanel>
+
+
+                    <Border Grid.Column="1"
+                            Background="#28537E"
+                            CornerRadius="8"
+                            Padding="14,9"
+                            VerticalAlignment="Center">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <Ellipse Width="8"
+                                     Height="8"
+                                     Fill="#6EE7B7"
+                                     Margin="0,0,7,0"/>
+
+                            <TextBlock Text="SISTEM AKTIVAN"
+                                       FontSize="10"
+                                       FontWeight="Bold"
+                                       Foreground="White"/>
+
+                        </StackPanel>
+
+                    </Border>
+
+                </Grid>
+
+            </Border>
+
+
+            <!-- ===================================================== -->
+            <!-- STATISTIČKE KARTICE -->
+            <!-- SVE U PLAVOJ TEMI -->
+            <!-- ===================================================== -->
+
+            <Grid Grid.Row="1"
+                  Margin="0,0,0,20">
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+
+                </Grid.ColumnDefinitions>
+
+
+                <!-- PACIJENTI -->
+
+                <Border Grid.Column="0"
+                        Background="{StaticResource SvetloPlava}"
+                        BorderBrush="#C7DBFF"
+                        BorderThickness="1"
+                        CornerRadius="10"
+                        Margin="0,0,6,0"
+                        Padding="17">
+
+                    <StackPanel>
+
+                        <TextBlock Text="PACIJENTI"
+                                   FontSize="11"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource Plava}"/>
+
+                        <TextBlock Text="{Binding UkupanBrojPacijenata}"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource Tekst}"
+                                   Margin="0,6,0,0"/>
+
+                        <TextBlock Text="Ukupan broj pacijenata"
+                                   FontSize="11"
+                                   Foreground="{StaticResource SporedniTekst}"/>
+
+                    </StackPanel>
+
+                </Border>
+
+
+                <!-- LEKARI -->
+
+                <Border Grid.Column="1"
+                        Background="{StaticResource SvetloPlava}"
+                        BorderBrush="#C7DBFF"
+                        BorderThickness="1"
+                        CornerRadius="10"
+                        Margin="2,0"
+                        Padding="17">
+
+                    <StackPanel>
+
+                        <TextBlock Text="LEKARI"
+                                   FontSize="11"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource Plava}"/>
+
+                        <TextBlock Text="{Binding UkupanBrojLekara}"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource Tekst}"
+                                   Margin="0,6,0,0"/>
+
+                        <TextBlock Text="Ukupan broj lekara"
+                                   FontSize="11"
+                                   Foreground="{StaticResource SporedniTekst}"/>
+
+                    </StackPanel>
+
+                </Border>
+
+
+                <!-- PREGLEDI -->
+
+                <Border Grid.Column="2"
+                        Background="{StaticResource SvetloPlava}"
+                        BorderBrush="#C7DBFF"
+                        BorderThickness="1"
+                        CornerRadius="10"
+                        Margin="2,0"
+                        Padding="17">
+
+                    <StackPanel>
+
+                        <TextBlock Text="PREGLEDI"
+                                   FontSize="11"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource Plava}"/>
+
+                        <TextBlock Text="{Binding UkupanBrojPregleda}"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource Tekst}"
+                                   Margin="0,6,0,0"/>
+
+                        <TextBlock Text="Ukupan broj pregleda"
+                                   FontSize="11"
+                                   Foreground="{StaticResource SporedniTekst}"/>
+
+                    </StackPanel>
+
+                </Border>
+
+
+                <!-- LABORATORIJA -->
+
+                <Border Grid.Column="3"
+                        Background="{StaticResource SvetloPlava}"
+                        BorderBrush="#C7DBFF"
+                        BorderThickness="1"
+                        CornerRadius="10"
+                        Margin="2,0"
+                        Padding="17">
+
+                    <StackPanel>
+
+                        <TextBlock Text="LABORATORIJA"
+                                   FontSize="11"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource Plava}"/>
+
+                        <TextBlock Text="{Binding UkupanBrojLaboratorijskihNalaza}"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource Tekst}"
+                                   Margin="0,6,0,0"/>
+
+                        <TextBlock Text="Ukupan broj nalaza"
+                                   FontSize="11"
+                                   Foreground="{StaticResource SporedniTekst}"/>
+
+                    </StackPanel>
+
+                </Border>
+
+
+                <!-- DOKUMENTI -->
+
+                <Border Grid.Column="4"
+                        Background="{StaticResource SvetloPlava}"
+                        BorderBrush="#C7DBFF"
+                        BorderThickness="1"
+                        CornerRadius="10"
+                        Margin="6,0,0,0"
+                        Padding="17">
+
+                    <StackPanel>
+
+                        <TextBlock Text="DOKUMENTI"
+                                   FontSize="11"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource Plava}"/>
+
+                        <TextBlock Text="{Binding UkupanBrojDokumenata}"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource Tekst}"
+                                   Margin="0,6,0,0"/>
+
+                        <TextBlock Text="Ukupan broj dokumenata"
+                                   FontSize="11"
+                                   Foreground="{StaticResource SporedniTekst}"/>
+
+                    </StackPanel>
+
+                </Border>
+
+            </Grid>
+
+
+            <!-- ===================================================== -->
+            <!-- GLAVNI IZVEŠTAJI -->
+            <!-- ===================================================== -->
+
+            <Grid Grid.Row="2"
+                  Margin="0,0,0,20">
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="1.35*"/>
+                    <ColumnDefinition Width="1*"/>
+
+                </Grid.ColumnDefinitions>
+
+
+                <!-- ================================================= -->
+                <!-- PREGLEDI PO LEKARU -->
+                <!-- ================================================= -->
+
+                <Border Grid.Column="0"
+                        Background="{StaticResource Bela}"
+                        BorderBrush="{StaticResource Granica}"
+                        BorderThickness="1"
+                        CornerRadius="12"
+                        Margin="0,0,8,0">
+
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+
+                        </Grid.RowDefinitions>
+
+
+                        <!-- Header -->
+
+                        <Border Grid.Row="0"
+                                Background="{StaticResource PozadinaSekcije}"
+                                CornerRadius="12,12,0,0"
+                                Padding="18,14">
+
+                            <StackPanel>
+
+                                <TextBlock Text="Pregledi po lekaru"
+                                           FontSize="17"
+                                           FontWeight="Bold"
+                                           Foreground="{StaticResource Tekst}"/>
+
+                                <TextBlock Text="Broj pregleda prema lekaru"
+                                           FontSize="11"
+                                           Foreground="{StaticResource SporedniTekst}"
+                                           Margin="0,2,0,0"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+
+                        <!-- Tabela -->
+
+                        <DataGrid Grid.Row="1"
+                                  ItemsSource="{Binding PreglediPoLekaru}"
+                                  Margin="18,14,18,18">
+
+                            <DataGrid.Columns>
+
+                                <DataGridTextColumn Header="LEKAR"
+                                                    Binding="{Binding PunoImeLekara}"
+                                                    Width="*"/>
+
+                                <DataGridTextColumn Header="BROJ PREGLEDA"
+                                                    Binding="{Binding BrojPregleda}"
+                                                    Width="145"/>
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+
+                    </Grid>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- PREGLEDI U PERIODU -->
+                <!-- ================================================= -->
+
+                <Border Grid.Column="1"
+                        Background="{StaticResource Bela}"
+                        BorderBrush="{StaticResource Granica}"
+                        BorderThickness="1"
+                        CornerRadius="12"
+                        Margin="8,0,0,0">
+
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+
+                        </Grid.RowDefinitions>
+
+
+                        <!-- Header -->
+
+                        <Border Grid.Row="0"
+                                Background="{StaticResource PozadinaSekcije}"
+                                CornerRadius="12,12,0,0"
+                                Padding="18,14">
+
+                            <StackPanel>
+
+                                <TextBlock Text="Pregledi u periodu"
+                                           FontSize="17"
+                                           FontWeight="Bold"
+                                           Foreground="{StaticResource Tekst}"/>
+
+                                <TextBlock Text="Analiza izabranog vremenskog perioda"
+                                           FontSize="11"
+                                           Foreground="{StaticResource SporedniTekst}"
+                                           Margin="0,2,0,0"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+
+                        <!-- Forma -->
+
+                        <StackPanel Grid.Row="1"
+                                    Margin="18,16,18,18">
+
+
+                            <TextBlock Text="DATUM OD"
+                                       FontSize="10"
+                                       FontWeight="Bold"
+                                       Foreground="{StaticResource SporedniTekst}"
+                                       Margin="0,0,0,5"/>
+
+                            <DatePicker SelectedDate="{Binding DatumOd, Mode=TwoWay}"
+                                        Margin="0,0,0,12"/>
+
+
+                            <TextBlock Text="DATUM DO"
+                                       FontSize="10"
+                                       FontWeight="Bold"
+                                       Foreground="{StaticResource SporedniTekst}"
+                                       Margin="0,0,0,5"/>
+
+                            <DatePicker SelectedDate="{Binding DatumDo, Mode=TwoWay}"
+                                        Margin="0,0,0,14"/>
+
+
+                            <Button Content="Prikaži statistiku"
+                                    Command="{Binding PrikaziPregledeUPerioduCommand}"
+                                    HorizontalAlignment="Left"
+                                    Width="145"/>
+
+
+                            <Border Background="{StaticResource SvetloPlava}"
+                                    BorderBrush="#C7DBFF"
+                                    BorderThickness="1"
+                                    CornerRadius="8"
+                                    Padding="14"
+                                    Margin="0,15,0,0">
+
+                                <StackPanel>
+
+                                    <TextBlock Text="UKUPAN BROJ PREGLEDA"
+                                               FontSize="10"
+                                               FontWeight="Bold"
+                                               Foreground="{StaticResource Plava}"/>
+
+                                    <TextBlock Text="{Binding BrojPregledaUPeriodu}"
+                                               FontSize="28"
+                                               FontWeight="Bold"
+                                               Foreground="{StaticResource Tekst}"
+                                               Margin="0,3,0,0"/>
+
+                                    <TextBlock Text="u izabranom periodu"
+                                               FontSize="11"
+                                               Foreground="{StaticResource SporedniTekst}"/>
+
+                                </StackPanel>
+
+                            </Border>
+
+
+                            <TextBlock Text="{Binding Poruka}"
+                                       Foreground="#DC2626"
+                                       FontSize="11"
+                                       TextWrapping="Wrap"
+                                       Margin="0,8,0,0"/>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                </Border>
+
+            </Grid>
+
+
+            <!-- ===================================================== -->
+            <!-- DONJE TABELE -->
+            <!-- ===================================================== -->
+
+            <Grid Grid.Row="3">
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+
+                </Grid.ColumnDefinitions>
+
+
+                <!-- ================================================= -->
+                <!-- STAROSNE GRUPE -->
+                <!-- ================================================= -->
+
+                <Border Grid.Column="0"
+                        Background="{StaticResource Bela}"
+                        BorderBrush="{StaticResource Granica}"
+                        BorderThickness="1"
+                        CornerRadius="12"
+                        Margin="0,0,8,0">
+
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+
+                        </Grid.RowDefinitions>
+
+
+                        <Border Grid.Row="0"
+                                Background="{StaticResource PozadinaSekcije}"
+                                CornerRadius="12,12,0,0"
+                                Padding="18,14">
+
+                            <StackPanel>
+
+                                <TextBlock Text="Pacijenti po starosnim grupama"
+                                           FontSize="17"
+                                           FontWeight="Bold"
+                                           Foreground="{StaticResource Tekst}"/>
+
+                                <TextBlock Text="Raspodela pacijenata prema uzrastu"
+                                           FontSize="11"
+                                           Foreground="{StaticResource SporedniTekst}"
+                                           Margin="0,2,0,0"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+
+                        <DataGrid Grid.Row="1"
+                                  ItemsSource="{Binding PacijentiPoStarosnimGrupama}"
+                                  Margin="18,14,18,18">
+
+                            <DataGrid.Columns>
+
+                                <DataGridTextColumn Header="STAROSNA GRUPA"
+                                                    Binding="{Binding Naziv}"
+                                                    Width="*"/>
+
+                                <DataGridTextColumn Header="BROJ PACIJENATA"
+                                                    Binding="{Binding BrojPacijenata}"
+                                                    Width="150"/>
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+
+                    </Grid>
+
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- POL -->
+                <!-- ================================================= -->
+
+                <Border Grid.Column="1"
+                        Background="{StaticResource Bela}"
+                        BorderBrush="{StaticResource Granica}"
+                        BorderThickness="1"
+                        CornerRadius="12"
+                        Margin="8,0,0,0">
+
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+
+                        </Grid.RowDefinitions>
+
+
+                        <Border Grid.Row="0"
+                                Background="{StaticResource PozadinaSekcije}"
+                                CornerRadius="12,12,0,0"
+                                Padding="18,14">
+
+                            <StackPanel>
+
+                                <TextBlock Text="Pacijenti po polu"
+                                           FontSize="17"
+                                           FontWeight="Bold"
+                                           Foreground="{StaticResource Tekst}"/>
+
+                                <TextBlock Text="Raspodela pacijenata prema polu"
+                                           FontSize="11"
+                                           Foreground="{StaticResource SporedniTekst}"
+                                           Margin="0,2,0,0"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+
+                        <DataGrid Grid.Row="1"
+                                  ItemsSource="{Binding PacijentiPoPolu}"
+                                  Margin="18,14,18,18">
+
+                            <DataGrid.Columns>
+
+                                <DataGridTextColumn Header="POL"
+                                                    Binding="{Binding Pol}"
+                                                    Width="*"/>
+
+                                <DataGridTextColumn Header="BROJ PACIJENATA"
+                                                    Binding="{Binding BrojPacijenata}"
+                                                    Width="150"/>
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+
+                    </Grid>
+
+                </Border>
+
+            </Grid>
+
+        </Grid>
+
+    </ScrollViewer>
+
+</UserControl>

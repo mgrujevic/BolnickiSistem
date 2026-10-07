@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "D:\\RAF\\2025-2026\\!Diplomski\\BolnickiSistem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DA7F9444-B019-3EA1-39EF-C648792A6858}|BolnickiSistem\\BolnickiSistem.csproj|d:\\raf\\2025-2026\\!diplomski\\bolnickisistem\\bolnickisistem\\services\\inicijalizacijabazeservis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DA7F9444-B019-3EA1-39EF-C648792A6858}|BolnickiSistem\\BolnickiSistem.csproj|solutionrelative:bolnickisistem\\services\\inicijalizacijabazeservis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DA7F9444-B019-3EA1-39EF-C648792A6858}|BolnickiSistem\\BolnickiSistem.csproj|d:\\raf\\2025-2026\\!diplomski\\bolnickisistem\\bolnickisistem\\services\\autentifikacioniservis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA7F9444-B019-3EA1-39EF-C648792A6858}|BolnickiSistem\\BolnickiSistem.csproj|solutionrelative:bolnickisistem\\services\\autentifikacioniservis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA7F9444-B019-3EA1-39EF-C648792A6858}|BolnickiSistem\\BolnickiSistem.csproj|d:\\raf\\2025-2026\\!diplomski\\bolnickisistem\\bolnickisistem\\views\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA7F9444-B019-3EA1-39EF-C648792A6858}|BolnickiSistem\\BolnickiSistem.csproj|solutionrelative:bolnickisistem\\views\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "InicijalizacijaBazeServis.cs",
-              "DocumentMoniker": "D:\\RAF\\2025-2026\\!Diplomski\\BolnickiSistem\\BolnickiSistem\\Services\\InicijalizacijaBazeServis.cs",
-              "RelativeDocumentMoniker": "BolnickiSistem\\Services\\InicijalizacijaBazeServis.cs",
-              "ToolTip": "D:\\RAF\\2025-2026\\!Diplomski\\BolnickiSistem\\BolnickiSistem\\Services\\InicijalizacijaBazeServis.cs",
-              "RelativeToolTip": "BolnickiSistem\\Services\\InicijalizacijaBazeServis.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAQwDMAAAASAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "LoginWindow.xaml.cs",
+              "DocumentMoniker": "D:\\RAF\\2025-2026\\!Diplomski\\BolnickiSistem\\BolnickiSistem\\Views\\LoginWindow.xaml.cs",
+              "RelativeDocumentMoniker": "BolnickiSistem\\Views\\LoginWindow.xaml.cs",
+              "ToolTip": "D:\\RAF\\2025-2026\\!Diplomski\\BolnickiSistem\\BolnickiSistem\\Views\\LoginWindow.xaml.cs",
+              "RelativeToolTip": "BolnickiSistem\\Views\\LoginWindow.xaml.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-06T07:46:05.583Z",
+              "WhenOpened": "2026-10-07T13:30:18.514Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AutentifikacioniServis.cs",
+              "DocumentMoniker": "D:\\RAF\\2025-2026\\!Diplomski\\BolnickiSistem\\BolnickiSistem\\Services\\AutentifikacioniServis.cs",
+              "RelativeDocumentMoniker": "BolnickiSistem\\Services\\AutentifikacioniServis.cs",
+              "ToolTip": "D:\\RAF\\2025-2026\\!Diplomski\\BolnickiSistem\\BolnickiSistem\\Services\\AutentifikacioniServis.cs",
+              "RelativeToolTip": "BolnickiSistem\\Services\\AutentifikacioniServis.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T13:29:43.295Z",
               "EditorCaption": ""
             }
           ]

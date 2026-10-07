@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BolnickiSistem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b55cbf5dfb37e1e1046686aebef4bb32cf1827a")]
 [assembly: System.Reflection.AssemblyProductAttribute("BolnickiSistem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BolnickiSistem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -68,7 +68,7 @@ namespace BolnickiSistem.Views.Lekar {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BolnickiSistem;V1.0.0.0;component/views/lekar/detaljipregledaview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BolnickiSistem;component/views/lekar/detaljipregledaview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\Lekar\DetaljiPregledaView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

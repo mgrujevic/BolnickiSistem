@@ -1,12 +1,13 @@
-﻿using System.Collections.ObjectModel;
+﻿using BolnickiSistem.Data;
+using BolnickiSistem.Models;
+using Konscious.Security.Cryptography;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Input;
-using Microsoft.EntityFrameworkCore;
-using BolnickiSistem.Data;
-using BolnickiSistem.Models;
 
 namespace BolnickiSistem.ViewModels;
 
@@ -321,13 +322,37 @@ public class KorisniciViewModel : INotifyPropertyChanged
 
     private string KreirajHashLozinke(string lozinka)
     {
-        using SHA256 sha256 = SHA256.Create();
+        const int duzinaSalta = 16;
+        const int duzinaHasha = 32;
 
-        byte[] bajtovi = Encoding.UTF8.GetBytes(lozinka);
-        byte[] hash = sha256.ComputeHash(bajtovi);
+        const int memorija = 19456;
+        const int iteracije = 2;
+        const int paralelizam = 1;
 
-        return Convert.ToHexString(hash);
+        byte[] bajtoviLozinke = System.Text.Encoding.UTF8.GetBytes(lozinka);
+
+        byte[] salt = RandomNumberGenerator.GetBytes(duzinaSalta);
+
+        using Argon2id argon2 =
+            new Argon2id(bajtoviLozinke)
+            {
+                Salt = salt,
+                MemorySize = memorija,
+                Iterations = iteracije,
+                DegreeOfParallelism = paralelizam
+            };
+
+        byte[] hash = argon2.GetBytes(duzinaHasha);
+
+        string saltBase64 = Convert.ToBase64String(salt);
+
+        string hashBase64 = Convert.ToBase64String(hash);
+
+        return $"argon2id${memorija}${iteracije}${paralelizam}${saltBase64}${hashBase64}";
     }
+
+
+
 
     public event PropertyChangedEventHandler? PropertyChanged;
 

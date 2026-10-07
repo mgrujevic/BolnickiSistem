@@ -202,3 +202,6 @@ D:\RAF\2025-2026\!Diplomski\BolnickiSistem\BolnickiSistem\obj\Debug\net10.0-wind
 D:\RAF\2025-2026\!Diplomski\BolnickiSistem\BolnickiSistem\obj\Debug\net10.0-windows\Views\Lekar\PacijentiLekarView.g.cs
 D:\RAF\2025-2026\!Diplomski\BolnickiSistem\BolnickiSistem\obj\Debug\net10.0-windows\Views\Lekar\PocetnaLekarView.g.cs
 D:\RAF\2025-2026\!Diplomski\BolnickiSistem\BolnickiSistem\obj\Debug\net10.0-windows\Views\Lekar\PocetnaLekarView.baml
+D:\RAF\2025-2026\!Diplomski\BolnickiSistem\BolnickiSistem\bin\Debug\net10.0-windows\Konscious.Security.Cryptography.Argon2.dll
+D:\RAF\2025-2026\!Diplomski\BolnickiSistem\BolnickiSistem\bin\Debug\net10.0-windows\Konscious.Security.Cryptography.Blake2.dll
+D:\RAF\2025-2026\!Diplomski\BolnickiSistem\BolnickiSistem\obj\Debug\net10.0-windows\BolnickiSistem.sourcelink.json

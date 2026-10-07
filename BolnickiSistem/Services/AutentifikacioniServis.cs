@@ -1,8 +1,9 @@
-﻿using System.Security.Cryptography;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
-using BolnickiSistem.Data;
+﻿using BolnickiSistem.Data;
 using BolnickiSistem.Models;
+using Konscious.Security.Cryptography;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace BolnickiSistem.Services;
 
@@ -15,25 +16,78 @@ public class AutentifikacioniServis
         _kontekst = kontekst;
     }
 
-    public async Task<Korisnik?> PrijaviKorisnikaAsync(string korisnickoIme, string lozinka)
+    public async Task<Korisnik?> PrijaviKorisnikaAsync(
+        string korisnickoIme,
+        string lozinka)
     {
-        string lozinkaHash = KreirajHashLozinke(lozinka);
+        Korisnik? korisnik =
+            await _kontekst.Korisnici
+                .Include(k => k.Uloga)
+                .FirstOrDefaultAsync(k =>
+                    k.KorisnickoIme == korisnickoIme);
 
-        return await _kontekst.Korisnici
-            .Include(k => k.Uloga)
-            .FirstOrDefaultAsync(k =>
-                k.KorisnickoIme == korisnickoIme &&
-                k.LozinkaHash == lozinkaHash &&
-                k.Aktivan);
+        if (korisnik == null)
+            return null;
+
+        if (!korisnik.Aktivan)
+            return null;
+
+        bool ispravnaLozinka = ProveriLozinku(lozinka, korisnik.LozinkaHash);
+
+        if (!ispravnaLozinka)
+            return null;
+
+        return korisnik;
     }
 
-    private string KreirajHashLozinke(string lozinka)
+
+    private bool ProveriLozinku(string lozinka, string sacuvaniHash)
     {
-        using SHA256 sha256 = SHA256.Create();
+        string[] delovi = sacuvaniHash.Split('$');
 
-        byte[] bajtovi = Encoding.UTF8.GetBytes(lozinka);
-        byte[] hash = sha256.ComputeHash(bajtovi);
+        if (delovi.Length != 6)
+            return false;
 
-        return Convert.ToHexString(hash);
+        if (delovi[0] != "argon2id")
+            return false;
+
+        if (!int.TryParse(delovi[1], out int memorija))
+            return false;
+
+        if (!int.TryParse(delovi[2], out int iteracije))
+            return false;
+
+        if (!int.TryParse(delovi[3], out int paralelizam))
+            return false;
+
+        byte[] salt;
+
+        byte[] ocekivaniHash;
+
+        try
+        {
+            salt = Convert.FromBase64String(delovi[4]);
+
+            ocekivaniHash = Convert.FromBase64String(delovi[5]);
+        }
+        catch (FormatException)
+        {
+            return false;
+        }
+
+        byte[] bajtoviLozinke = Encoding.UTF8.GetBytes(lozinka);
+
+        using Argon2id argon2 =
+            new Argon2id(bajtoviLozinke)
+            {
+                Salt = salt,
+                MemorySize = memorija,
+                Iterations = iteracije,
+                DegreeOfParallelism = paralelizam
+            };
+
+        byte[] dobijeniHash = argon2.GetBytes(ocekivaniHash.Length);
+
+        return CryptographicOperations.FixedTimeEquals(dobijeniHash, ocekivaniHash);
     }
 }
